@@ -1,0 +1,194 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Show Popularity and Their Ratings",
+  "data": {
+    "url": "https://raw.githubusercontent.com/rhas0021/3179/main/FIT3179%20Map/data/netflix_list.csv"
+  },
+  "width": 290,
+  "height":350,
+  "params": [
+    {
+      "name": "Votes_Above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 1800000,
+        "step": 1000,
+        "name": "Minimum Number of Votes: "
+      }
+    },
+    {
+      "name": "show_type_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "TV Series",
+          "Movie",
+          "TV Special",
+          "TV Mini Series",
+          "Short",
+          "Video",
+          "TV Movie",
+          "TV Short",
+          "Video Game",
+          "TV Episode"
+        ],
+        "labels": [
+          "Show All",
+          "TV Series",
+          "Movie",
+          "TV Special",
+          "TV Mini Series",
+          "Short",
+          "Video",
+          "TV Movie",
+          "TV Short",
+          "Video Game",
+          "TV Episode"
+        ],
+        "name": "Show Type Selection: "
+      }
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "Number of Votes",
+      "type": "quantitative",
+      "title": "Number of Votes",
+      "axis": {"tickCount": 6},
+      "scale": {"type": "linear","domain": [0, 2000000]}
+    },
+    "x": {
+      "field": "IMDB Rating",
+      "type": "quantitative",
+      "axis": {"tickCount": 9},
+      "scale": {"domain": [1, 10]}
+    }
+  },
+  "transform": [
+    {"filter": "datum['Number of Votes'] > 0"},
+    {"filter": "datum['IMDB Rating'] > 0"},
+    {
+      "filter": "show_type_selection == null || datum['Show Type'] == show_type_selection"
+    },
+    {"filter": "datum['Number of Votes'] > Votes_Above"}
+],
+  "layer":[
+    { "mark": "circle",
+      "encoding": {
+      "color":{
+      "field": "Show Type",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "TV Series",
+          "Movie",
+          "TV Special",
+          "TV Mini Series",
+          "Short",
+          "Video",
+          "TV Movie",
+          "TV Short",
+          "Video Game",
+          "TV Episode"
+        ],
+        "range": [
+          "#800000",
+          "#42d4f4",
+          "#808000",
+          "#469990",
+          "#fa7a25",
+          "#f58231",
+          "#3cb44b",
+          "#4363d8",
+          "#ffd8b1",
+          "#aaffc3"
+        ]
+      }
+    },
+    "opacity": {
+      "value": 0.6
+    },
+    "size":{
+      "field": "Number of Votes",
+      "type": "quantitative",
+      "scale": {
+        "type": "threshold",
+        "domain": [1000, 50000, 100000, 1000000, 1500000],
+        "range": [10, 50, 150, 200, 300, 400]
+      },
+      "legend": {"format": ".1s"}
+    },
+    "tooltip": [
+      {"field": "Title", "type": "nominal"},
+      {"field": "Genres", "type": "nominal"},
+      {"field": "Show Type", "type": "nominal"},
+      {"field": "IMDB Rating", "type": "quantitative", "format": ","},
+      {"field": "Number of Votes", "type": "quantitative", "format": ","}
+    ]
+  }
+  },
+  { "mark": {
+    "type": "text",
+    "align": "center",
+    "baseline": "middle",
+    "dx": 5,
+    "dy": -15,    
+    "fontSize": 8,
+    "fontStyle": "bold",
+    "width": 290,
+    "height":350
+  },
+  "encoding": {
+    "text": {"field": "Title", "type": "nominal"},
+    "color": {"value": "black"},
+    "opacity": {
+      "condition": {
+        "test": "datum['Title'] == 'Defcon 2012'",
+        "value": 1
+      },
+      "value": 0
+    },
+    "tooltip": [
+      {"field": "Title", "type": "nominal"},
+      {"field": "Genres", "type": "nominal"},
+      {"field": "Show Type", "type": "nominal"},
+      {"field": "IMDB Rating", "type": "quantitative", "format": ","},
+      {"field": "Number of Votes", "type": "quantitative", "format": ","}
+    ]
+  }
+  },
+  { "mark": {
+    "type": "text",
+    "align": "left",
+    "baseline": "middle",
+    "dx": -55,
+    "dy": -15,    
+    "fontSize": 8,
+    "fontStyle": "bold",
+    "width": 290,
+    "height":350
+  },
+  "encoding": {
+    "text": {"field": "Title", "type": "nominal"},
+    "color": {"value": "black"},
+    "opacity": {
+      "condition": {
+        "test": "datum['Title'] == 'Breaking Bad'",
+        "value": 1
+      },
+      "value": 0
+    },
+    "tooltip": [
+      {"field": "Title", "type": "nominal"},
+      {"field": "Genres", "type": "nominal"},
+      {"field": "Show Type", "type": "nominal"},
+      {"field": "IMDB Rating", "type": "quantitative", "format": ","},
+      {"field": "Number of Votes", "type": "quantitative", "format": ","}
+    ]
+  }
+  }
+  ]
+}
