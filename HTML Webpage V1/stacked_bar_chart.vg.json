@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Show Ratings",
+  "data": {"url": "https://raw.githubusercontent.com/rhas0021/3179/main/FIT3179%20Map/data/Netflix%20Updated.csv"},
+  "mark": "bar",
+  "width": 160,
+  "encoding": {
+    "x": {
+      "field": "Rating",
+      "type": "nominal",
+      "sort": "-y"
+    },
+    "y": {"title": "Number of Shows","aggregate":"count", "field": "Title", "type": "quantitative"},
+    "color": {
+      "field": "Show Type", 
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Movie",
+          "TV Show"
+        ],
+        "range": [
+          "#ff1a1a",
+          "#954535"
+        ]
+      }
+    },
+    "tooltip": [
+      {"title": "Number of Shows","aggregate":"count", "field": "Title", "type": "quantitative"},
+      {"field": "Show Type", "type": "nominal"},
+      {"field": "Rating", "type": "nominal"}
+    ]
+  }
+}
+

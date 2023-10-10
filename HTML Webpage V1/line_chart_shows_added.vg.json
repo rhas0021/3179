@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Shows Added Over the Years",
+  "data": {"url": "https://raw.githubusercontent.com/rhas0021/3179/main/FIT3179%20Map/data/Netflix%20Updated.csv"},
+  "transform": [
+    {"filter": "datum['Year Added'] > 0"}
+],
+  "width":"container",
+  "height":235,
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Year Added", "type": "quantitative"},
+    "y": {"title": "Shows Added","aggregate":"count", "field": "Title", "type": "quantitative"},
+    "color":{
+      "field": "Show Type", 
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Movie",
+          "TV Show"
+        ],
+        "range": [
+          "#ff1a1a",
+          "#954535"
+        ]
+      }
+    },
+    "tooltip": [
+      {"title": "Shows Added","aggregate":"count", "field": "Title", "type": "quantitative"},
+      {"field": "Year Added", "type": "quantitative"},
+      {"field": "Show Type", "type": "nominal"}
+    ]
+  }
+  
+}

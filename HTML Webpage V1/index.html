@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Multiple Visualisations | An Example</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><legend></legend>
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+</head>
+
+<body >
+    <div class="page" style="background-image: url('https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg');" >
+      <!-- pure grid group -->
+      <div class="pure-picture">
+        <div class="small" style="text-align: center;">
+          <img src="Logos-Readability-Netflix-logo.png" alt="Netflix Logo">
+        </div>
+        <h1 style="text-align: center;">A Visualisation</h1>
+      </div>
+      <!-- end pure grid group -->
+
+      <!-- pure grid group -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>
+            Introduction to Netflix
+          </h2>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <p>In January 2007, the company launched a streaming media service, introducing video on demand via the Internet. </p>
+            <p>Netflix is a subscription-based streaming service that allows our members to watch TV shows and movies on an internet-connected device. </p>
+            <p>With one of the world's leading entertainment services comprising over 238 million paid memberships in over 190 countries enjoying TV series, films and games across a wide variety of genres and languages. </p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div id="vis5" class="vis-container"  style="padding-left: 150px;"></div>
+        </div>
+      </div>
+
+      <!-- pure grid group -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>
+            Amount of Shows Available in Each Country
+          </h2>
+        </div>
+        <div class="pure-u-1-1" style="padding-bottom: 20px;">
+          <div style="text-align: center; padding-left: 15px;">
+            <div id="vis1" class="vis-container"></div>
+          </div>
+        </div>
+        <div class="pure-u-1-3">
+          <div id="vis4" class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="description description-left" style="padding-left: 20px;">
+            <h2>Three Equal Columns</h2>
+            <p>There is a steady increase in the number of movies and TV shows added to Netflix over the years. In 2010, there were less than 100 movies and TV shows combined. However by 2020, there were over 3,500 movies and TV shows in Netflix.</p>
+            <p> </p>
+          </div>
+        </div>
+        <div class="pure-u-1-3" style="width: 31.5%;">
+          <div id="vis3" class="vis-container" style="margin-left: 15px;"></div>
+        </div>
+
+      </div>
+      <!-- end pure grid group -->
+
+      <!-- pure grid group -->
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <h2>Highest Rated Shows on Netflix</h2>
+            <p>On the right, are all the existing shows on Netflix and their popularity.
+              Their popularity can be seen with the number of user votes in how much 
+              the show rated. The most popular movie on Netflix is "The Lord of the Rings: The Fellowship of the Ring" 
+              with a rating of 8.8 in IMDB. The most popular TV show on Netflix is Breaking Bad with a score of
+              9.4 in IMDB.
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div id="vis2" class="vis-container" style="padding-left:10px;"></div>
+        </div>
+      </div>
+      <!-- end pure grid group -->
+
+      
+
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var specVis1 = "./FIT3179_choropleth_map.vg.json";
+    var specVis2 = "./bubble_plot_netflix.vg.json";
+    var specVis3 = "./line_chart_shows_added.vg.json";
+    var specVis4 = "./stacked_bar_chart.vg.json";
+    var specVis5 = "./donut_chart.vg.json";
+
+    vegaEmbed('#vis1', specVis1, { "actions": false });
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis5', specVis5, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+  </script>
+</body>
+
+</html>

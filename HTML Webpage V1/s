@@ -1,0 +1,70 @@
+,
+  { "mark": {
+    "type": "text",
+    "align": "center",
+    "baseline": "middle",
+    "dx": 5,
+    "dy": -15,    
+    "fontSize": 8,
+    "fontStyle": "bold",
+    "width": 290,
+    "height":350
+  },
+  "encoding": {
+    "text": {"field": "Title", "type": "nominal"},
+    "color": {"value": "black"},
+    "opacity": {
+      "condition": {
+        "test": "datum['Title'] == 'Defcon 2012'",
+        "value": 1
+      },
+      "value": 0
+    }
+  }
+  },
+  { "mark": {
+    "type": "text",
+    "align": "left",
+    "baseline": "middle",
+    "dx": -50,
+    "dy": -15,    
+    "fontSize": 8,
+    "fontStyle": "bold",
+    "width": 290,
+    "height":350
+  },
+  "encoding": {
+    "text": {"field": "Title", "type": "nominal"},
+    "color": {"value": "black"},
+    "opacity": {
+      "condition": {
+        "test": "datum['Title'] == 'Breaking Bad'",
+        "value": 1
+      },
+      "value": 0
+    }
+  }
+  },
+  { "mark": {
+    "type": "text",
+    "align": "left",
+    "baseline": "middle",
+    "dx": -190,
+    "dy": -15,    
+    "fontSize": 8,
+    "fontStyle": "bold",
+    "width": 290,
+    "height":350
+  },
+  "encoding": {
+    "text": {"field": "Title", "type": "nominal"},
+    "color": {"value": "black"},
+    "opacity": {
+      "condition": {
+        "test": "datum['Title'] == 'The Lord of the Rings: The Fellowship of the Ring'",
+        "value": 1
+      },
+      "value": 0
+    }
+  }
+  }

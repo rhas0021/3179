@@ -1,0 +1,134 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Show Popularity and Their Ratings",
+  "data": {
+    "url": "https://raw.githubusercontent.com/rhas0021/3179/main/FIT3179%20Map/data/netflix_list.csv"
+  },
+  "width": 240,
+  "height":235,
+  "params": [
+    {
+      "name": "Votes_Above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 1800000,
+        "step": 1000,
+        "name": "Minimum Number of Votes: "
+      }
+    },
+    {
+      "name": "show_type_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "TV Series",
+          "Movie",
+          "TV Special",
+          "TV Mini Series",
+          "Short",
+          "Video",
+          "TV Movie",
+          "TV Short",
+          "Video Game",
+          "TV Episode"
+        ],
+        "labels": [
+          "Show All",
+          "TV Series",
+          "Movie",
+          "TV Special",
+          "TV Mini Series",
+          "Short",
+          "Video",
+          "TV Movie",
+          "TV Short",
+          "Video Game",
+          "TV Episode"
+        ],
+        "name": "Show Type Selection: "
+      }
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "Number of Votes",
+      "type": "quantitative",
+      "title": "Number of Votes",
+      "axis": {"tickCount": 6},
+      "scale": {"type": "linear","domain": [0, 2000000]}
+    },
+    "x": {
+      "field": "IMDB Rating",
+      "type": "quantitative",
+      "axis": {"tickCount": 9},
+      "scale": {"domain": [1, 10]}
+    }
+  },
+  "transform": [
+    {"filter": "datum['Number of Votes'] > 0"},
+    {"filter": "datum['IMDB Rating'] > 0"},
+    {
+      "filter": "show_type_selection == null || datum['Show Type'] == show_type_selection"
+    },
+    {"filter": "datum['Number of Votes'] > Votes_Above"}
+],
+  "layer":[
+    { "mark": "circle",
+      "encoding": {
+      "color":{
+      "field": "Show Type",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "TV Series",
+          "Movie",
+          "TV Special",
+          "TV Mini Series",
+          "Short",
+          "Video",
+          "TV Movie",
+          "TV Short",
+          "Video Game",
+          "TV Episode"
+        ],
+        "range": [
+          "#ff1a1a",
+          "#954535",
+          "#808000",
+          "#469990",
+          "#fa7a25",
+          "#f58231",
+          "#3cb44b",
+          "#4363d8",
+          "#ffd8b1",
+          "#aaffc3"
+        ]
+      }
+    },
+    "opacity": {
+      "value": 0.6
+    },
+    "size":{
+      "field": "Number of Votes",
+      "type": "quantitative",
+      "scale": {
+        "type": "threshold",
+        "domain": [1000, 50000, 100000, 1000000, 1500000],
+        "range": [10, 50, 150, 200, 300, 400]
+      },
+      "legend": {"format": ".1s"}
+    },
+    "tooltip": [
+      {"field": "Title", "type": "nominal"},
+      {"field": "Genres", "type": "nominal"},
+      {"field": "Show Type", "type": "nominal"},
+      {"field": "IMDB Rating", "type": "quantitative", "format": ","},
+      {"field": "Number of Votes", "type": "quantitative", "format": ","}
+    ]
+  }
+  }
+  ]
+}
