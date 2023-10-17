@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Show Ratings",
+  "data": {"url": "https://raw.githubusercontent.com/rhas0021/3179/main/FIT3179%20Map/data/Netflix%20Updated.csv"},
+  "mark": "bar",
+  "width": 220,
+  "height": 300,
+  "params": [
+    {
+      "name": "show_type_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Movie",
+          "TV Show"
+        ],
+        "labels": [
+          "Show Both",
+          "Movie",
+          "TV Show"
+        ],
+        "name": "Show Type: "
+    }}
+  ],
+  "transform": [{
+    "filter": "show_type_selection == null || datum['Show Type'] == show_type_selection"
+  }],
+  "encoding": {
+    "x": {
+      "field": "Rating",
+      "type": "nominal",
+      "sort": "-y"
+    },
+    "y": {"title": "Number of Shows","aggregate":"count", "field": "Title", "type": "quantitative"},
+    "color": {
+      "field": "Show Type", 
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Movie",
+          "TV Show"
+        ],
+        "range": [
+          "#ff1a1a",
+          "#954535"
+        ]
+      },
+      "legend":{
+        "orient": "top-right",
+        "offset": 12
+      }
+    },
+    "tooltip": [
+      {"title": "Number of Shows","aggregate":"count", "field": "Title", "type": "quantitative","format": ","},
+      {"field": "Show Type", "type": "nominal"},
+      {"field": "Rating", "type": "nominal"}
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke":null
+    },
+    "axis": {
+      "grid": false
+  }
+  }
+}
+

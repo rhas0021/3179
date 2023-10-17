@@ -1,0 +1,149 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Show Popularity and Their Ratings",
+  "data": {
+    "url": "https://raw.githubusercontent.com/rhas0021/3179/main/netflix_list.csv"
+  },
+  "width": 240,
+  "height":235,
+  "params": [
+    {
+      "name": "Votes_Above",
+      "value": 200000,
+      "bind": {
+        "input": "range",
+        "min": 200000,
+        "max": 1800000,
+        "step": 1000,
+        "name": "Minimum Number of Votes: "
+      }
+    },
+    {
+      "name": "show_type_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "TV Show",
+          "Movie"
+        ],
+        "labels": [
+          "Show Both",
+          "TV Show",
+          "Movie"
+        ],
+        "name": "Show Type: "
+      }
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "Number of Votes",
+      "type": "quantitative",
+      "title": "Number of Votes",
+      "axis": {"tickCount": 6},
+      "scale": {"type": "linear","domain": [100000, 2000000]}
+    },
+    "x": {
+      "field": "IMDB Rating",
+      "type": "quantitative",
+      "axis": {"tickCount": 9},
+      "scale": {"domain": [5, 10]}
+    }
+  },
+  "transform": [
+    {"filter": "datum['Number of Votes'] > 200000"},
+    {"filter": "datum['IMDB Rating'] > 0"},
+    {
+      "filter": "show_type_selection == null || datum['Show Type'] == show_type_selection"
+    },
+    {"filter": "datum['Number of Votes'] > Votes_Above"}
+],
+  "layer":[
+    { "mark": "circle",
+      "encoding": {
+      "color":{
+      "field": "Show Type",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "TV Show",
+          "Movie"
+        ],
+        "range": [
+          "#954535",
+          "#ff1a1a"
+        ]
+      }
+    },
+    "opacity": {
+      "value": 0.6
+    },
+    "size":{
+      "field": "Number of Votes",
+      "type": "quantitative",
+      "scale": {
+        "type": "threshold",
+        "domain": [1000, 50000, 100000, 1000000, 1500000],
+        "range": [10, 50, 150, 200, 300, 400]
+      },
+      "legend": {"format": ".1s"}
+    },
+    "tooltip": [
+      {"field": "Title", "type": "nominal"},
+      {"field": "Genres", "type": "nominal"},
+      {"field": "Show Type", "type": "nominal"},
+      {"field": "IMDB Rating", "type": "quantitative", "format": ","},
+      {"field": "Number of Votes", "type": "quantitative", "format": ","},
+      {"field": "Language", "type": "nominal"}
+    ]
+  }
+  },
+  { "mark": {
+    "type": "text",
+    "align": "right",
+    "baseline": "bottom",
+    "dx": 10,
+    "dy": -15,    
+    "fontSize": 8,
+    "fontStyle": "bold",
+    "width": 290,
+    "height":360
+  },
+  "encoding": {
+    "text": {"field": "Title", "type": "nominal"},
+    "color": {"value": "black"},
+    "opacity": {
+      "condition": {
+        "test": "datum['Title'] == 'The Lord of the Rings: The Fellowship of the Ring'",
+        "value": 1
+      },
+      "value": 0
+    }
+  }
+  },
+  { "mark": {
+    "type": "text",
+    "align": "right",
+    "baseline": "middle",
+    "dx": 0,
+    "dy": -15,    
+    "fontSize": 8,
+    "fontStyle": "bold",
+    "width": 290,
+    "height":350
+  },
+  "encoding": {
+    "text": {"field": "Title", "type": "nominal"},
+    "color": {"value": "black"},
+    "opacity": {
+      "condition": {
+        "test": "datum['Title'] == 'Breaking Bad'",
+        "value": 1
+      },
+      "value": 0
+    }
+  }
+  }
+  ]
+}

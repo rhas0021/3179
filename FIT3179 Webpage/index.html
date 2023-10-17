@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Netflix: A Visualisation</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><legend></legend>
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+</head>
+
+<body>
+    <div class="page" style="background-image: url('https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg');" >
+      <!-- pure grid group -->
+      <div class="pure-picture">
+        <div class="small" style="text-align: center;">
+          <img src="image resources/Logos-Readability-Netflix-logo.png" alt="Netflix Logo">
+        </div>
+        <h1 style="text-align: center;">A Visualisation</h1>
+      </div>
+      <!-- end pure grid group -->
+
+      <!-- pure grid group -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>
+            Introduction to Netflix
+          </h2>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <p>In January 2007, Netflix launched a streaming media service, introducing video on demand via the Internet. </p>
+            <p><a href="https://www.netflix.com/au/">Netflix</a> is a subscription-based streaming service that allows our members to watch TV shows and movies on an internet-connected device. </p>
+            <p>With over 8700 titles and <b>almost 70% of it being movies</b>, users can easily subscribe and gain access to vast content at the ease of their time without the need to adhere to TV schedules. </p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div id="vis5" class="vis-container"  style="padding-left: 50px; padding-bottom: 10px;"></div>
+        </div>
+        <div class="pure-u-1-1">
+          <h2>
+            Netflix's Rise to Popularity
+          </h2>
+        </div>
+        <div class="pure-u-1-1">
+              <div id="vis7" class="vis-container" style="text-align: center;"></div>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <p>With one of the world's leading entertainment services comprising over 238 million paid memberships in over 190 countries enjoying TV series, films and games across a wide variety of genres and languages. 
+              Netflix has been <b>consistently popular</b> in the USA and Canada with over <b>75 million subscribers</b> in the region alone <b>during its' peak</b>.
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+            <p>Over the years, Netflix has become increasingly popular with its' number of subscribers gradually increasing. 
+              From 2019 to 2023, the number of subscribers in the Asia-Pacific have significantly increased from <b>12 to 39 million subcribers</b> which is <b>3 times</b> as much.
+              A factor of this is due to India being the second country who produces the most content and is uploaded to Netflix.
+            </p>
+        </div>
+      </div>
+
+      <!-- pure grid group -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>
+            Amount of Shows Produced from Each Country
+          </h2>
+        </div>
+        <div class="pure-u-1-1" >
+          <div id="vis1" class="vis-container" style="text-align: center;"></div>
+          <div style="text-align: center; padding-left: 22px;">
+            <div id="vis6" class="vis-container" style="text-align: center;"></div>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <p>
+              Most shows on Netflix are from the United States of America (USA) as it takes the number one spot for the most produced movies
+              and TV shows with a whopping 3,240 movies and TV shows originating from the USA. Roughly <b>38% of Netflix's library  
+              originates from the USA</b>. Due to the large amount of movies and TV shows on Netflix was from the USA, it's no surprise why the region USA and Canada have the most number of subscribers
+              by area per person.  
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <p>
+            Second to the USA, India takes the spot for the most movies and TV shows on Netflix with 1,057 shows in Netflix's
+            library making it 12% of Netflix's total show library. There is a great disparity between the second-most and third-most country which is United Kingdom 
+            producing movies and TV shows, with a difference of almost half the amount of India. The disparity is even greater between
+            the UK and USA with USA producing 5 times more movies and TV shows that are on Netflix.
+          </p>
+        </div>
+        <div class="pure-u-1-1">
+            <h2>Evolution on Show Count and their Demographic</h2>
+        </div>
+        <div class="pure-u-1-3">
+          <div id="vis4" class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="description description-left" style="padding-left: 10px;">
+            <p>There is a steady increase in the number of movies and TV shows added to Netflix until 2015 where in just a span of 2 years the number of movies and TV shows increased exponentially. Netflix peaked in 2019 in adding movies where in <b>one year</b> they <b>added more than 1400 movies</b>.</p>
+            <p>
+              Netflix is widely popular among young adults as a <a href="https://www.statista.com/statistics/742108/netflix-subscription-adults-usa-by-age/">survey</a> conducted in the USA proved that <b>75% of subscribers</b> are
+              <b>between 18 to 34 years old</b>. This is enforced by the fact that most shows are rated TV-MA which stands for
+              TV for Mature Audiences.
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-1-3" style="width: 31.5%;">
+          <div id="vis3" class="vis-container" style="margin-left: 15px;"></div>
+        </div>
+      </div>
+      <!-- end pure grid group -->
+
+      <!-- pure grid group -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>Highest Rated Shows on Netflix</h2>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <p>On the right, are shows on Netflix and their popularity voted by users.
+              Their popularity can be seen with the number of user votes and how much is 
+              the show rated. 
+            </p>
+            <p>
+              The reason most of this popular shows are in english because <a href="https://www.whats-on-netflix.com/news/does-netflix-have-too-much-foreign-content/#:~:text=How%20much%20English%20content%20is,out%20of%20the%20total%205806."><b>english titles make up around 55%</b></a> of all content in Netflix.
+            </p>
+            <p>
+              The most popular movie on Netflix is <a href= "https://www.imdb.com/title/tt0120737/">The Lord of the Rings: The Fellowship of the Ring</a> 
+              with a rating of 8.8 in IMDB. The most popular TV show on Netflix is <a href= "https://www.imdb.com/title/tt0903747/">Breaking Bad</a> with a score of
+              9.4 in IMDB.
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div id="vis2" class="vis-container" style="padding-top:0px;"></div>
+        </div>
+      </div>
+      <!-- end pure grid group -->
+
+      
+
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var specVis1 = "charts/FIT3179_choropleth_map.vg.json";
+    var specVis2 = "charts/bubble_plot_netflix.vg.json";
+    var specVis3 = "charts/line_chart_shows_added.vg.json";
+    var specVis4 = "charts/stacked_bar_chart.vg.json";
+    var specVis5 = "charts/donut_chart.vg.json";
+    var specVis6 = "charts/normalized_stacked_bar.vg.json";
+    var specVis7 = "charts/heat_map.vg.json";
+
+    vegaEmbed('#vis1', specVis1, { "actions": false });
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis5', specVis5, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis6', specVis6, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis7', specVis7, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+  </script>
+</body>
+
+</html>

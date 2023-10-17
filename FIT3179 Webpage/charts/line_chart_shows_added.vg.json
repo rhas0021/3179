@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Shows Added Over the Years",
+  "data": {"url": "https://raw.githubusercontent.com/rhas0021/3179/main/FIT3179%20Map/data/Netflix%20Updated.csv"},
+  "transform": [
+    {"filter": "datum['Year Added'] > 0"},
+    {
+      "filter": "show_type_selection == null || datum['Show Type'] == show_type_selection"
+    }
+],
+  "width":"container",
+  "height":320,
+  "mark": "line",
+  "params": [
+    {
+      "name": "show_type_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "TV Show",
+          "Movie"
+        ],
+        "labels": [
+          "Show Both",
+          "TV Show",
+          "Movie"
+        ],
+        "name": "Show Type: "
+      }
+    }
+  ],
+  "encoding": {
+    "x": {"field": "Year Added", "type": "ordinal"},
+    "y": {"title": "Shows Added","aggregate":"count", "field": "Title", "type": "quantitative"},
+    "color":{
+      "field": "Show Type", 
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Movie",
+          "TV Show"
+        ],
+        "range": [
+          "#ff1a1a",
+          "#954535"
+        ]
+      },
+      "legend":{
+        "orient": "top-left",
+        "offset": 12
+      }
+    },
+    "tooltip": [
+      {"title": "Shows Added","aggregate":"count", "field": "Title", "type": "quantitative", "format": ","},
+      {"field": "Year Added", "type": "ordinal"},
+      {"field": "Show Type", "type": "nominal"}
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke":null
+    },
+    "axis": {
+      "grid": false
+  }}
+}

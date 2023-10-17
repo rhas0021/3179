@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Number of Subscribers Over the Fiscal Quarters (2019 to 2023)",
+  "data": 
+    {
+      "url": "https://raw.githubusercontent.com/rhas0021/3179/main/HTML%20Webpage%20V1/data/netflix_subscribers_updated.csv"
+    },
+  "mark": "rect",
+  "width": 450,
+  "height": 170,
+  "encoding": {
+    "y": {"field": "Region", "type": "nominal"},
+    "x": {"title":"Fiscal Quarters","timeUnit": "yearquarter","field": "Date", "type": "temporal"},
+    "color": {
+      "field": "Number of Subscribers",
+      "type": "quantitative",
+      "scale": {
+        "type": "log",
+        "domain": [10000000, 20000000, 30000000, 40000000, 60000000, 73000000],
+        "range": ["#ffcccc","#ff6666","#ff4d4d","#ff0000","#800000","#000000"]
+      }
+    },
+    "tooltip": [
+      {"field": "Region", "type": "nominal"},
+      {"field": "Date", "type": "temporal"},
+      {"field": "Number of Subscribers", "type": "quantitative", "format":","}
+    ]
+    
+  }
+}
